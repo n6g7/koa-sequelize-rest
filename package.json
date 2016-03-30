@@ -1,6 +1,6 @@
 {
   "name": "koa-sequelize-rest",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Sequelize Rest Middlewares for Koa",
   "author": "Nathan G <nathan@gnab.fr>",
   "main": "index.js",
