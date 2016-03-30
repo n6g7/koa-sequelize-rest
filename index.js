@@ -8,19 +8,21 @@ const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[
 
 class Rest
 {
-  constructor(model) {
+  constructor(model, options) {
     debug(model);
     this.model = model;
     this.plural = inflection.pluralize(model.name);
+    _.defaults(options, { idColumn: 'uuid' });
+    this.options = options;
   }
 
   _getEntity(ctx, include) {
     // Check UUID format
-    if (!uuidRegex.test(ctx.params.uuid)) ctx.throw(404);
+    if (!uuidRegex.test(ctx.params[this.options.idColumn])) ctx.throw(404);
 
     // Fetch the entity
     return this.model.findOne({
-      where: { uuid: ctx.params.uuid },
+      where: { [this.options.idColumn]: ctx.params[this.options.idColumn] },
       include
     });
   }
