@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "pretest": "jshint index.js && jscs index.js",
-    "test": "mocha test"
+    "test": "mocha test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "koa",
@@ -17,7 +19,8 @@
   "dependencies": {
     "debug": "^2.2.0",
     "inflection": "^1.8.0",
-    "lodash": "^4.5.0"
+    "lodash": "^4.5.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -25,5 +28,6 @@
     "jshint": "^2.9.1",
     "mocha": "^2.4.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
